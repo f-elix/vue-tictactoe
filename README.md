@@ -1,5 +1,7 @@
 # vue-tictactoe
 
+A tic-tac-toe game made with Vue.
+
 ## Project setup
 ```
 npm install
