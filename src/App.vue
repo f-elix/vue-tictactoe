@@ -161,6 +161,7 @@ export default {
 
 body {
   margin: 0;
+  font-family: sans-serif;
 }
 
 #app {
@@ -227,7 +228,6 @@ body {
 .board {
   margin-top: 3rem;
   width: 100%;
-  /* height: 21rem; */
   max-width: 30rem;
   height: 30rem;
   background-color: var(--white);
@@ -289,7 +289,13 @@ body {
   opacity: 0;
 }
 
-.v-enter-active {
+.v-enter-active,
+.v-leave-active {
   transition: all ease 0.4s;
+}
+
+.v-leave-to {
+  transform: scale(0);
+  opacity: 0;
 }
 </style>

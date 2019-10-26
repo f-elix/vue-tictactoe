@@ -1,11 +1,13 @@
 <template>
   <div class="dimmer" @click="closeModal">
-    <div class="window">
-      <h1>
-        <slot />
-      </h1>
-      <button @click="closeModal">Close</button>
-    </div>
+    <transition name="window" appear>
+      <div class="window">
+        <h1>
+          <slot />
+        </h1>
+        <button @click="closeModal">Close</button>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -22,16 +24,19 @@ export default {
 <style scoped>
 .dimmer {
   position: fixed;
-  height: 100vh;
-  width: 100vh;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+
   display: flex;
   justify-content: center;
-  z-index: 1;
+  align-items: center;
 }
 
 .window {
-  margin-top: 6rem;
   width: 21rem;
   height: 9rem;
   background-color: #696969;
@@ -40,7 +45,7 @@ export default {
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
-  z-index: 2;
+  z-index: 10;
 }
 
 .window h1 {
@@ -53,6 +58,16 @@ export default {
   border-radius: 5px;
   font-weight: bold;
   background-color: var(--white);
+}
+
+.window-enter {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.window-enter-active {
+  transition: all 0.4s cubic-bezier(0.97, 0.52, 0.25, 1.32);
+  transition-delay: 0.2s;
 }
 </style>
 
